@@ -1,0 +1,13 @@
+services:
+  php:
+    image: php:8.2-apache
+    ports: ["8080:80"]
+    volumes: ["./php-app:/var/www/html"]
+    command: >
+      sh -c "a2enmod cgi &&
+      apache2-foreground"
+
+  perl:
+    build: ./perl-app
+    ports: ["8081:8080"]
+    volumes: ["./perl-app:/app"]
